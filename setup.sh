@@ -27,7 +27,7 @@ sudo fc-cache -f -v
 sudo chsh -s /usr/bin/zsh $USER
 
 function linkFile() {
-    ln -s $(pwd)/$1 ~/$1 || echo "Skipping $1"
+    ln -sf $(pwd)/$1 ~/$1 || echo "Skipping $1"
 }
 
 linkFile .vim
