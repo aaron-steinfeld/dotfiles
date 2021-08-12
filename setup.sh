@@ -5,7 +5,6 @@ sudo apt-get install -y \
   git \
   gnupg2 \
   jq \
-  openssh-client \
   unzip \
   zsh \
   fonts-powerline
