@@ -1,0 +1,45 @@
+[user]
+	name = Aaron Steinfeld
+	email = aaron@traceable.ai
+[color]
+	ui = true
+[branch]
+	autosetuprebase = never
+[alias]
+    st = status
+    co = checkout 
+    cp = cherry-pick
+    lg = log  --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
+    ignore = update-index --assume-unchanged
+    unignore = update-index --no-assume-unchanged
+    ignoredir = "!f() { cd ${GIT_PREFIX:-.} && git ls-files -z $1 | xargs -0 git update-index --verbose --assume-unchanged; }; f"
+    unignoredir = "!f() { cd ${GIT_PREFIX:-.} && git ls-files -z $1 | xargs -0 git update-index --verbose --no-assume-unchanged; }; f"
+    ignored = !git ls-files -v | grep "^[[:lower:]]"
+    find-merged-branches = !git branch -vv | awk '{print $1,$4}' | grep 'gone]' | awk '{print $1}'
+    prune-all = !git fetch origin -pq && git find-merged-branches && confirm && git find-merged-branches | xargs git branch -D
+    first-push = !git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)
+    f-p = first-push
+    sync-tags = !git tag -l | xargs git tag -d && git fetch -t 
+[log]
+	date = local
+[core]
+    autocrlf = input
+[merge]
+    tool = idea
+[diff]
+	tool = vscode
+[difftool]
+	prompt = false
+[commit]
+	gpgsign = true
+[difftool "vscode"]
+	cmd = "code --wait --diff $LOCAL $REMOTE "
+[submodule]
+	recurse = true
+[pull]
+	rebase = false
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
