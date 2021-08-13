@@ -8,7 +8,8 @@ sudo apt-get install -y \
   jq \
   unzip \
   zsh \
-  fonts-powerline
+  fonts-powerline \
+  tmux
 
 sudo wget https://github.com/mikefarah/yq/releases/download/v4.11.2/yq_linux_amd64 -O /usr/bin/yq &&\
   sudo chmod +x /usr/bin/yq
@@ -19,6 +20,7 @@ pushd gdub
 sudo ./install
 popd && rm -rf gdub
 
+wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
 ln -s $(pwd)/agnoster.zsh-theme $(pwd)/.oh-my-zsh/themes/agnoster.zsh-theme || echo "Skipping"
 
 wget https://download.jetbrains.com/fonts/JetBrainsMono-2.001.zip
