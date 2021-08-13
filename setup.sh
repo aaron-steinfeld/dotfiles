@@ -37,6 +37,6 @@ linkFile .vimrc
 linkFile .gitconfig
 linkFile .zshrc
 linkFile .tmux.conf
+linkFile .gradle
 
-pwd
-gw
+echo $ARTIFACTORY_CREDS >> .gradle/gradle.properties
