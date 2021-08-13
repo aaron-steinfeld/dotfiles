@@ -37,3 +37,6 @@ linkFile .vimrc
 linkFile .gitconfig
 linkFile .zshrc
 linkFile .tmux.conf
+
+pwd
+gw
