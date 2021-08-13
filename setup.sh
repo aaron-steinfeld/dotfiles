@@ -39,4 +39,14 @@ linkFile .zshrc
 linkFile .tmux.conf
 linkFile .gradle
 
-echo $ARTIFACTORY_CREDS >> .gradle/gradle.properties
+for cred in $ARTIFACTORY_CREDS
+do
+    echo $cred >> ~/.gradle/gradle.properties
+done
+
+for rootdir in $(find /workspaces -maxdepth 2 -name gradle.properties -exec dirname {} \;)
+do
+  pushd $rootdir
+  gw
+  popd
+done
